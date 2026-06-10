@@ -17,6 +17,9 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+
 " shows a git diff in the sign column
 Plug 'airblade/vim-gitgutter'
 
@@ -105,8 +108,6 @@ set wildmenu
 
 " enable 256 color
 set t_Co=256
-" TODO: need?
-set guioptions=egmrti
 set gfn=Monospace\ 10
 
 " IndentLine
@@ -413,7 +414,7 @@ local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
-require('lspconfig')['rust_analyzer'].setup{
+vim.lsp.rust_analyzer = {
     on_attach = on_attach,
     flags = lsp_flags,
     -- Server-specific settings...
@@ -421,6 +422,7 @@ require('lspconfig')['rust_analyzer'].setup{
       ["rust-analyzer"] = {}
     }
 }
+vim.lsp.enable({'rust_analyzer'})
 
 EOF
 
