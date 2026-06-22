@@ -212,6 +212,12 @@ augroup vimrc-make-cmake
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
 
+" c/c++
+augroup vimrc-c-cpp
+  autocmd!
+  autocmd BufNewFile,BufRead *.asc setlocal filetype=cpp
+augroup END
+
 set autoread
 
 " Split
